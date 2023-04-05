@@ -210,7 +210,7 @@ persistence:
       # StorageClass will be used (the default).
       # Set it to "-" to disable dynamic provisioning
       storageClass: fiak8spv03
-      subPath: /packages
+      subPath: ""
       accessMode: ReadWriteOnce
       size: 50Gi
       annotations: {}
@@ -218,7 +218,7 @@ persistence:
       jobLog:
         existingClaim: ""
         storageClass: fiak8spv03
-        subPath: /packages
+        subPath: ""
         accessMode: ReadWriteOnce
         size: 1Gi
         annotations: {}
@@ -227,7 +227,7 @@ persistence:
     database:
       existingClaim: ""
       storageClass: fiak8spv03
-      subPath: /packages
+      subPath: ""
       accessMode: ReadWriteOnce
       size: 1Gi
       annotations: {}
@@ -236,14 +236,14 @@ persistence:
     redis:
       existingClaim: ""
       storageClass: fiak8spv03
-      subPath: /packages
+      subPath: ""
       accessMode: ReadWriteOnce
       size: 1Gi
       annotations: {}
     trivy:
       existingClaim: ""
       storageClass: fiak8spv03
-      subPath: /packages
+      subPath: ""
       accessMode: ReadWriteOnce
       size: 5Gi
       annotations: {}
