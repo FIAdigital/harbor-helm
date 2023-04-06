@@ -20,7 +20,7 @@ expose:
     auto:
       # The common name used to generate the certificate, it's necessary
       # when the type isn't "ingress"
-      commonName: ""
+      commonName: "harbor"
     secret:
       # The name of secret which contains keys named:
       # "tls.crt" - the certificate
@@ -399,8 +399,8 @@ enableMigrateHelmHook: false
 # If service exposed via "ingress", the Nginx will not be used
 nginx:
   image:
-    repository: goharbor/nginx-photon
-    tag: dev
+    repository: nginx
+    tag: alpine
   # set the service account to be used, default if left empty
   serviceAccountName: ""
   # mount the service account token
@@ -421,8 +421,8 @@ nginx:
 
 portal:
   image:
-    repository: goharbor/harbor-portal
-    tag: dev
+    repository: bitnami/harbor-portal
+    tag: latest
   # set the service account to be used, default if left empty
   serviceAccountName: ""
   # mount the service account token
@@ -443,8 +443,8 @@ portal:
 
 core:
   image:
-    repository: goharbor/harbor-core
-    tag: dev
+    repository: bitnami/harbor-core
+    tag: latest
   # set the service account to be used, default if left empty
   serviceAccountName: ""
   # mount the service account token
@@ -496,8 +496,8 @@ core:
 
 jobservice:
   image:
-    repository: goharbor/harbor-jobservice
-    tag: dev
+    repository: bitnami/harbor-jobservice
+    tag: latest
   replicas: 1
   revisionHistoryLimit: 10
   # set the service account to be used, default if left empty
@@ -539,16 +539,16 @@ registry:
   automountServiceAccountToken: false
   registry:
     image:
-      repository: goharbor/registry-photon
-      tag: dev
+      repository: bitnami/harbor-registry
+      tag: latest
     # resources:
     #  requests:
     #    memory: 256Mi
     #    cpu: 100m
   controller:
     image:
-      repository: goharbor/harbor-registryctl
-      tag: dev
+      repository: bitnami/harbor-registryctl
+      tag: latest
 
     # resources:
     #  requests:
@@ -603,9 +603,9 @@ trivy:
   enabled: true
   image:
     # repository the repository for Trivy adapter image
-    repository: goharbor/trivy-adapter-photon
+    repository: bitnami/harbor-adapter-trivy
     # tag the tag for Trivy adapter image
-    tag: dev
+    tag: latest
   # set the service account to be used, default if left empty
   serviceAccountName: ""
   # mount the service account token
@@ -679,8 +679,8 @@ notary:
     # mount the service account token
     automountServiceAccountToken: false
     image:
-      repository: goharbor/notary-server-photon
-      tag: dev
+      repository: bitnami/harbor-notary-server
+      tag: latest
     replicas: 1
     # resources:
     #  requests:
@@ -701,8 +701,8 @@ notary:
     # mount the service account token
     automountServiceAccountToken: false
     image:
-      repository: goharbor/notary-signer-photon
-      tag: dev
+      repository: bitnami/harbor-notary-signer
+      tag: latest
     replicas: 1
     # resources:
     #  requests:
@@ -736,7 +736,7 @@ database:
       repository: goharbor/harbor-db
       tag: dev
     # The initial superuser password for internal database
-    password: "changeit"
+    password: "ivy@16443"
     # The size limit for Shared memory, pgSQL use it for shared_buffer
     # More details see:
     # https://github.com/goharbor/harbor/issues/15034
@@ -849,8 +849,8 @@ exporter:
   # mount the service account token
   automountServiceAccountToken: false
   image:
-    repository: goharbor/harbor-exporter
-    tag: dev
+    repository: bitnami/harbor-exporter
+    tag: latest
   nodeSelector: {}
   tolerations: []
   affinity: {}
